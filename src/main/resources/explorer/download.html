@@ -54,16 +54,83 @@
     <div class="bg-light p-5 rounded">
         <h1 class="mt-5">PDFfer Explorer</h1>
         <p class="lead">Try out the PDFfer API from this page.</p>
-        <p>Refer to the <a href="https://pdffer.nekosoft.org">documentation</a> for more information.</p>
         <form method="post" action="">
             <div class="mb-3">
                 <label for="pdfPayload" class="form-label">Enter the PDF payload as a JSON string</label>
-                <textarea class="form-control" id="pdfPayload" name="pdfPayload" rows="5"></textarea>
+                <textarea class="form-control" id="pdfPayload" name="pdfPayload" rows="5" cols="50"></textarea>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <h3>Invoice Sample Data:</h3>
+                <textarea disabled class="form-control" id="invoicePdfPayload" name="pdfPayload" rows="15" cols="50">
+                    {
+  "invoiceNo": "NK20210020",
+  "invoiceDate": "2021-09-03",
+  "dueDate": "2021-10-02",
+  "client": "The Client, Inc.",
+  "clientAddress": "999 W 99St Street\n99999 Client City (SS)\nU.S.A.",
+  "clientEmail": "accounting@theclient.com",
+  "clientTaxCode": "11-1111111",
+  "sender": "The Company Ltd",
+  "senderAddress": "99, The Street\nThe Town, F9 9FF\nU.K.",
+  "senderEmail": "admin@thecompany.com",
+  "senderTaxCode": "GB33333333333",
+  "currency": "GBP",
+  "lineItems": [
+    {
+      "description": "2021.08.26: Done some work",
+      "quantity": 1,
+      "unitFormat": "%dd",
+      "unitPrice": 400.0,
+      "taxName": "VAT 0%",
+      "taxRate": 0.0
+    },
+    {
+      "description": "2021.08.27: Done more work",
+      "quantity": 1,
+      "unitFormat": "%dd",
+      "unitPrice": 400.0,
+      "taxName": "VAT 0%",
+      "taxRate": 0.0
+    },
+    {
+      "description": "2021.08.29-30: An awful lot of work here too",
+      "quantity": 2,
+      "unitFormat": "%dd",
+      "unitPrice": 450.0,
+      "taxName": "VAT 0%",
+      "taxRate": 0.0
+    },
+    {
+      "description": "2021.09.01-03: Conclusion of the work",
+      "quantity": 3,
+      "unitFormat": "%dd",
+      "unitPrice": 375.0,
+      "taxName": "VAT 0%",
+      "taxRate": 0.0
+    },
+    {
+      "description": "Billable Expenses (receipts attached to email)",
+      "quantity": 1,
+      "unitFormat": "%d",
+      "unitPrice": 1395.39,
+      "taxName": "VAT 0%",
+      "taxRate": 0.0
+    }
+  ],
+  "footer1": "The Company Ltd\nVAT ID: GB33333333333\nReg. no: 123456789",
+  "footer2": "99, The Street\nThe Town, F9 9FF\nU.K.",
+  "bankDetails": "The Company Ltd\nAccount No: 00000000000\nSort Code: 11-11-11\n33, SouthEast Street\nBank City, F3 3FF"
+}
+                </textarea>
             </div>
             <div class="mb-3">
                 <label for="pdfTemplate" class="form-label">Select the PDF template to apply</label>
                 <select class="form-select" id="pdfTemplate" name="pdfTemplate">
                     <option selected>default</option>
+                    <option>invoice</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Generate PDF</button>

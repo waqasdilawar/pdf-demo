@@ -1,6 +1,7 @@
 package com.devgurupk.pdfdemo.pdffer;
 
 import com.devgurupk.pdfdemo.PDFferTemplates.DefaultPdfTemplate;
+import com.devgurupk.pdfdemo.PDFferTemplates.invoice.PdfInvoiceTemplate;
 import com.devgurupk.pdfdemo.pdffer.template.PdfTemplate;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,10 @@ public class PdfferProducerBean {
     }
 
     PdfTemplate findTemplate(String templateName) {
-        return new DefaultPdfTemplate();
+        return switch (templateName) {
+            case "invoice" -> new PdfInvoiceTemplate();
+            default -> new DefaultPdfTemplate();
+        };
     }
 
 }
